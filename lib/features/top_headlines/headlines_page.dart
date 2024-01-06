@@ -70,7 +70,7 @@ class _HeadlinePageState extends State<HeadlinePage> {
                                   fit: BoxFit.cover,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(16.0),
                                   child: Text(result[index].description ?? ''),
                                 ),
                               ],
