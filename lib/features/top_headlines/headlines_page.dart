@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:news_app/config/network/network_request.dart';
 import 'package:news_app/features/top_headlines/headline_model.dart';
+import 'package:news_app/features/top_headlines/news_card.dart';
 import 'package:news_app/features/top_headlines/post_details.dart';
 
 class HeadlinePage extends StatefulWidget {
@@ -41,41 +42,8 @@ class _HeadlinePageState extends State<HeadlinePage> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Card(
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => PostDetailsPage(result[index]),
-                                ),
-                              );
-                            },
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    result[index].title ?? '',
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
-                                Image.network(
-                                  result[index].imageUrl ?? '',
-                                  height: 500,
-                                  width: double.infinity,
-                                  fit: BoxFit.cover,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: Text(result[index].description ?? ''),
-                                ),
-                              ],
-                            ),
-                          ),
+                        child: NewsCard(
+                          result: result[index],
                         ),
                       );
                     },
@@ -93,5 +61,13 @@ class _HeadlinePageState extends State<HeadlinePage> {
         ],
       ),
     );
+  }
+
+  getPublishedDate(String date) {
+
+    if(date.isEmpty) return '';
+
+    return date.substring(0,11);
+
   }
 }

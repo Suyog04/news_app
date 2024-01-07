@@ -14,11 +14,14 @@ class PostDetailsPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Image.network(
-            post.imageUrl ?? '',
-            height: 500,
-            width: double.infinity,
-            fit: BoxFit.cover,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16.0),
+            child: Image.network(
+              post.imageUrl ?? '',
+              height: 500,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
